@@ -39,11 +39,10 @@ app.use("/api/v1", other);
 
 export default app;
 
-app.get("/", (req, res, next) =>
+app.get("/", (req, res) =>
   res.send(
     `<h1> Course API IS LIVE NOW !! <br>. Click <a href=${process.env.FRONTEND_URL}>Here</a> to explore the frontend.  </h1>`
-  ),
-  next(),
+  )
 );
 
 app.use(ErrorMiddware);
