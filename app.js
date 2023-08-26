@@ -13,7 +13,6 @@ config({
   path: "./config/config.env",
 });
 
-
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -28,7 +27,7 @@ app.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
-    methods:["GET","POST","PUT","DELETE"]
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
@@ -40,12 +39,11 @@ app.use("/api/v1", other);
 
 export default app;
 
-app.get("/", (req, res) =>
+app.get("/", (req, res, next) =>
   res.send(
-    `<h1> Server is Working. Click <a href=${"http://localhost:3000/"}>Here</a> to visit frontend.  </h1>`
-  )
+    `<h1> Course API IS LIVE NOW !! <br>. Click <a href=${process.env.FRONTEND_URL}>Here</a> to explore the frontend.  </h1>`
+  ),
+  next(),
 );
-
-
 
 app.use(ErrorMiddware);
